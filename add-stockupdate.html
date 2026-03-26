@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BakeStock - Stock Update</title>
+    <link rel="stylesheet" href="add-stockupdate.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>BakeStock</h2>
+    <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="add-product.html">Add Product</a></li>
+        <li><a href="add-stockupdate.html">Stock Update</a></li>
+        
+    </ul>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+    <h1>🔄 Stock Update</h1>
+
+    <div class="form-box">
+        <label>Select Product</label>
+        <select id="productSelect"></select>
+
+        <label>Update Quantity</label>
+        <input type="number" id="quantity" placeholder="Enter quantity">
+
+        <button onclick="updateStock()">Update Stock</button>
+
+        <p id="message"></p>
+    </div>
+</div>
+
+<script src="add-stockupdate.js"></script>
+</body>
+</html>
