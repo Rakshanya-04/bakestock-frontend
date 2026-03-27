@@ -7,6 +7,7 @@
 </head>
 <body>
 
+<!-- Sidebar -->
 <div class="sidebar">
     <h2>BakeStock</h2>
     <ul>
@@ -17,21 +18,25 @@
     </ul>
 </div>
 
+<!-- Main Content -->
 <div class="main-content">
-    <h1>Add Product</h1>
+    <h1>➕ Add Product</h1>
 
+    <!-- Form -->
     <div class="form-box">
         <input type="text" id="name" placeholder="Product Name">
         <input type="text" id="category" placeholder="Category">
-        <input type="number" id="stock" placeholder="Quantity">
+        <input type="number" id="quantity" placeholder="Quantity">
 
-        <button onclick="addProduct()">Add Product</button>
+        <!-- Button (NO onclick) -->
+        <button id="addBtn">Add Product</button>
     </div>
 
-    <p id="msg"></p>
+    <!-- Message -->
+    <p id="message"></p>
 </div>
 
-<!-- ✅ CORRECT FILE -->
+<!-- JS FILE (VERY IMPORTANT) -->
 <script src="add-product.js"></script>
 
 </body>

@@ -1,41 +1,43 @@
-const BASE_URL = "https://your-backend-url.onrender.com"; 
-// ⚠️ CHANGE THIS TO YOUR RENDER URL
+document.getElementById("addBtn").addEventListener("click", addProduct);
+
+const BASE_URL = "https://bakestock-backend.onrender.com"; // change this
 
 async function addProduct() {
+  console.log("Button clicked"); // 🔥 check this
+
   const name = document.getElementById("name").value;
   const category = document.getElementById("category").value;
   const stock = document.getElementById("quantity").value;
 
   if (!name || !category || !stock) {
-    alert("Please fill all fields");
+    alert("Fill all fields");
     return;
   }
 
   try {
-    const response = await fetch(`${BASE_URL}/add-product`, {
+    const res = await fetch(`${BASE_URL}/add-product`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name: name,
-        category: category,
-        stock: stock
+        name,
+        category,
+        stock
       })
     });
 
-    const data = await response.json();
-    console.log(data);
+    const data = await res.json();
 
-    if (response.ok) {
-      alert("✅ Product Added Successfully");
+    if (res.ok) {
+      alert("✅ Product Added");
       location.reload();
     } else {
-      alert(data.message || "Error adding product");
+      alert(data.message);
     }
 
-  } catch (error) {
-    console.error("FRONTEND ERROR:", error);
-    alert("Server not reachable");
+  } catch (err) {
+    console.error(err);
+    alert("Server error");
   }
 }
