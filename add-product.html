@@ -2,52 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Products - BakeStock</title>
+    <title>Add Product - BakeStock</title>
     <link rel="stylesheet" href="add-product.css">
 </head>
 <body>
 
-<!-- Sidebar -->
 <div class="sidebar">
     <h2>BakeStock</h2>
     <ul>
         <li><a href="index.html">Dashboard</a></li>
         <li><a href="product.html">Products</a></li>
         <li><a href="add-product.html">Add Product</a></li>
-        <li><a href="add-stockupdate.html"></a>Stock Update</a></li>
-        
+        <li><a href="stock-update.html">Stock Update</a></li>
     </ul>
 </div>
 
-<!-- Main Content -->
 <div class="main-content">
-    <header>
-        <h1>Product Management</h1>
-    </header>
+    <h1>Add Product</h1>
 
-    <!-- Form -->
     <div class="form-box">
         <input type="text" id="name" placeholder="Product Name">
         <input type="text" id="category" placeholder="Category">
-        <input type="number" id="quantity" placeholder="Quantity">
+        <input type="number" id="stock" placeholder="Quantity">
+
         <button onclick="addProduct()">Add Product</button>
     </div>
 
-    <!-- Table -->
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Stock</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="productList"></tbody>
-    </table>
+    <p id="msg"></p>
 </div>
 
-<script src="product.js"></script>
+<!-- ✅ CORRECT FILE -->
+<script src="add-product.js"></script>
+
 </body>
 </html>
