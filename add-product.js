@@ -1,55 +1,15 @@
-let products = [];
-let id = 1;
+const BASE_URL = "https://your-app-name.onrender.com";
 
-// Add product
-function addProduct() {
-    let name = document.getElementById("name").value;
-    let category = document.getElementById("category").value;
-    let quantity = document.getElementById("quantity").value;
+async function addProduct() {
+  let name = document.getElementById("name").value;
+  let category = document.getElementById("category").value;
+  let stock = document.getElementById("stock").value;
 
-    if (name === "" || category === "" || quantity === "") {
-        alert("Fill all fields");
-        return;
-    }
+  await fetch(`${BASE_URL}/add-product`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, category, stock })
+  });
 
-    let product = {
-        id: id++,
-        name: name,
-        category: category,
-        quantity: quantity
-    };
-
-    products.push(product);
-    displayProducts();
-
-    // clear inputs
-    document.getElementById("name").value = "";
-    document.getElementById("category").value = "";
-    document.getElementById("quantity").value = "";
-}
-
-// Display products
-function displayProducts() {
-    let list = document.getElementById("productList");
-    list.innerHTML = "";
-
-    products.forEach((p, index) => {
-        list.innerHTML += `
-            <tr>
-                <td>${p.id}</td>
-                <td>${p.name}</td>
-                <td>${p.category}</td>
-                <td>${p.quantity}</td>
-                <td>
-                    <button class="delete-btn" onclick="deleteProduct(${index})">Delete</button>
-                </td>
-            </tr>
-        `;
-    });
-}
-
-// Delete product
-function deleteProduct(index) {
-    products.splice(index, 1);
-    displayProducts();
+  alert("Product Added!");
 }

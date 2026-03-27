@@ -1,25 +1,22 @@
+const BASE_URL = "https://your-app-name.onrender.com";
+
 async function loadProducts() {
-    try {
-        const response = await fetch("http://localhost:5000/products");
-        const products = await response.json();
+  let res = await fetch(`${BASE_URL}/products`);
+  let data = await res.json();
 
-        const tableBody = document.getElementById("tableBody");
-        tableBody.innerHTML = "";
+  let table = document.getElementById("tableBody");
+  table.innerHTML = "";
 
-        products.forEach(product => {
-            let row = `
-                <tr>
-                    <td>${product._id}</td>
-                    <td>${product.name}</td>
-                    <td>${product.category}</td>
-                    <td>${product.stock}</td>
-                </tr>
-            `;
-            tableBody.innerHTML += row;
-        });
-    } catch (err) {
-        console.error("Error loading products:", err);
-    }
+  data.forEach(p => {
+    table.innerHTML += `
+      <tr>
+        <td>${p._id}</td>
+        <td>${p.name}</td>
+        <td>${p.category}</td>
+        <td>${p.stock}</td>
+      </tr>
+    `;
+  });
 }
 
 window.onload = loadProducts;
