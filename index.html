@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BakeStock Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
 </head>
@@ -10,80 +11,62 @@
 <div class="sidebar">
     <h2>BakeStock</h2>
     <ul>
-    <li><a href="index.html">Dashboard</a></li>
-    <li><a href="product.html">Products</a></li>
-    <li><a href="add-product.html">Add Product</a></li>
-    <li><a href="add-stockupdate.html">Stock Update</a></li>
-    
-</ul>
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="add-product.html">Add Product</a></li>
+        <li><a href="stock-update.html">Stock Update</a></li>
+    </ul>
 </div>
 
 <div class="main-content">
     <header>
-        <h1>Dashboard</h1>
+        <h1>Inventory Dashboard</h1>
     </header>
 
     <div class="cards">
         <div class="card">
             <h3>Total Products</h3>
-            <p>120</p>
+            <p id="total">0</p>
         </div>
 
         <div class="card">
             <h3>Low Stock Items</h3>
-            <p>15</p>
+            <p id="low" style="color: #e74c3c;">0</p>
         </div>
 
         <div class="card">
             <h3>Items Added Today</h3>
-            <p>20</p>
+            <p id="today">0</p>
         </div>
 
         <div class="card">
-            <h3>Stock Updates</h3>
-            <p>18</p>
+            <h3>System Status</h3>
+            <p id="status" style="font-size: 1rem; color: #2ecc71;">Connected ✅</p>
         </div>
     </div>
 
     <div class="table-section">
-        <h2>Recent Stock</h2>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Product Name</th>
-                <th>Category</th>
-                <th>Stock</th>
-            </tr>
-            <tr>
-                <td>101</td>
-                <td>Chocolate Cake</td>
-                <td>Cake</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>102</td>
-                <td>Bread Loaf</td>
-                <td>Bakery</td>
-                <td>25</td>
-            </tr>
-            <tr>
-                <td>103</td>
-                <td>Cupcake</td>
-                <td>Dessert</td>
-                <td>50</td>
-                </tr>
-             <tr>
-                <td>104</td>
-                <td>Blueberry Muffin</td>
-                <td>Dessert</td>
-                <td>65</td>
-                
-             
-            </tr>
-        </table>
+        <h2>Recently Added Items</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Current Stock</th>
+                    </tr>
+                </thead>
+                <tbody id="recentTableBody">
+                    <tr>
+                        <td colspan="3" style="text-align:center;">Syncing with database...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
 </div>
+
+<script src="dashboard.js"></script>
 
 </body>
 </html>
