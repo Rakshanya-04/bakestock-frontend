@@ -1,34 +1,63 @@
-const BASE_URL = "https://your-app-name.onrender.com";
+const BASE_URL = "https://bakestock-backend.onrender.com";
 
-let products = [];
+const productSelect = document.getElementById("productSelect");
+const newStockInput = document.getElementById("newStock");
+const updateBtn = document.getElementById("updateBtn");
 
-async function loadProducts() {
-  let res = await fetch(`${BASE_URL}/products`);
-  products = await res.json();
+// 1. Load products into dropdown when page opens
+window.onload = loadProductDropdown;
 
-  let select = document.getElementById("productSelect");
-  select.innerHTML = "";
+async function loadProductDropdown() {
+    try {
+        const res = await fetch(`${BASE_URL}/products`);
+        const products = await res.json();
 
-  products.forEach(p => {
-    let option = document.createElement("option");
-    option.value = p._id;
-    option.text = `${p.name} (Stock: ${p.stock})`;
-    select.appendChild(option);
-  });
+        productSelect.innerHTML = '<option value="">-- Choose a Product --</option>';
+
+        products.forEach(p => {
+            const option = document.createElement("option");
+            option.value = p._id; // Store the MongoDB ID as the value
+            option.textContent = `${p.name} (Current: ${p.stock})`;
+            productSelect.appendChild(option);
+        });
+    } catch (err) {
+        console.error("Error loading products:", err);
+        productSelect.innerHTML = '<option value="">Error loading products</option>';
+    }
 }
 
-async function updateStock() {
-  let id = document.getElementById("productSelect").value;
-  let qty = document.getElementById("quantity").value;
+// 2. Handle the Update click
+updateBtn.addEventListener("click", async () => {
+    const productId = productSelect.value;
+    const stockValue = newStockInput.value;
 
-  await fetch(`${BASE_URL}/update-stock/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ stock: qty })
-  });
+    if (!productId || !stockValue) {
+        alert("Please select a product and enter a new stock value.");
+        return;
+    }
 
-  alert("Stock Updated!");
-  loadProducts();
-}
+    updateBtn.disabled = true;
+    updateBtn.innerText = "Updating...";
 
-window.onload = loadProducts;
+    try {
+        const res = await fetch(`${BASE_URL}/update-stock/${productId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ stock: parseInt(stockValue) })
+        });
+
+        if (res.ok) {
+            alert("✅ Stock updated successfully!");
+            newStockInput.value = "";
+            loadProductDropdown(); // Refresh the list to show new numbers
+        } else {
+            alert("Update failed. Try again.");
+        }
+    } catch (err) {
+        console.error("Update error:", err);
+        alert("Server error.");
+    } finally {
+        updateBtn.disabled = false;
+        updateBtn.innerText = "Update Inventory";
+    }
+});
