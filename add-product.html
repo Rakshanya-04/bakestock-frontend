@@ -2,41 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product - BakeStock</title>
     <link rel="stylesheet" href="add-product.css">
 </head>
 <body>
 
-<!-- Sidebar -->
 <div class="sidebar">
     <h2>BakeStock</h2>
     <ul>
         <li><a href="index.html">Dashboard</a></li>
         <li><a href="product.html">Products</a></li>
-        <li><a href="add-product.html">Add Product</a></li>
+        <li><a href="add-product.html" class="active">Add Product</a></li>
         <li><a href="stock-update.html">Stock Update</a></li>
     </ul>
 </div>
 
-<!-- Main Content -->
 <div class="main-content">
-    <h1>➕ Add Product</h1>
+    <h1>➕ Add New Product</h1>
 
-    <!-- Form -->
     <div class="form-box">
-        <input type="text" id="name" placeholder="Product Name">
-        <input type="text" id="category" placeholder="Category">
-        <input type="number" id="quantity" placeholder="Quantity">
+        <div class="input-group">
+            <label for="name">Product Name</label>
+            <input type="text" id="name" placeholder="e.g. Chocolate Cake">
+        </div>
 
-        <!-- Button (NO onclick) -->
-        <button id="addBtn">Add Product</button>
+        <div class="input-group">
+            <label for="category">Category</label>
+            <input type="text" id="category" placeholder="e.g. Pastries">
+        </div>
+
+        <div class="input-group">
+            <label for="quantity">Initial Quantity</label>
+            <input type="number" id="quantity" placeholder="0">
+        </div>
+
+        <button id="addBtn">Add to Inventory</button>
     </div>
 
-    <!-- Message -->
+    <hr>
+
+    <div class="inventory-display">
+        <h2>Current Inventory</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Stock Level</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                    <tr>
+                        <td colspan="3" style="text-align:center;">Loading products...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <p id="message"></p>
 </div>
 
-<!-- JS FILE (VERY IMPORTANT) -->
 <script src="add-product.js"></script>
 
 </body>
