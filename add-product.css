@@ -1,10 +1,9 @@
-/* Use your existing Body and Sidebar styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
-/* Sidebar (Matches your current design) */
+/* Sidebar */
 .sidebar {
     width: 200px;
     height: 100vh;
@@ -40,7 +39,7 @@ body {
 
 /* Main Content */
 .main-content {
-    margin-left: 240px; /* Adjusting to give sidebar breathing room */
+    margin-left: 240px;
     padding: 20px;
 }
 
@@ -48,65 +47,54 @@ header h1 {
     margin-bottom: 20px;
 }
 
-/* --- Stock Update Specific Styles --- */
-
-/* Form Container */
+/* Form */
 .form-box {
     display: flex;
-    flex-direction: column; /* Stacked for a cleaner look on update page */
-    gap: 15px;
-    max-width: 400px; /* Prevents the form from being too wide */
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
-/* Label styling */
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-/* Dropdown and Input Styling */
-.form-box select, 
 .form-box input {
-    width: 100%;
-    padding: 10px;
+    padding: 8px;
+    flex: 1;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 14px;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
-/* Dropdown specific */
-.form-box select {
-    background-color: white;
-    cursor: pointer;
-}
-
-/* Update Button (Matches your orange theme) */
 .form-box button {
-    padding: 12px;
+    padding: 10px;
     background: #e89623;
     border: none;
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s;
 }
 
 .form-box button:hover {
     background: #e09e00;
 }
 
-/* Status Message */
-#statusMessage {
-    margin-top: 15px;
-    font-size: 14px;
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
     text-align: center;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: darkred;
 }
